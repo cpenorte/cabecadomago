@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cabeça do Mago SVG/CSS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #1b2234 0%, #0d111a 100%);
+      overflow: hidden;
+    }
+
+    .scene {
+      width: 300px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Animação de flutuação suave da cabeça */
+    .wizard-head {
+      animation: floatHead 4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes floatHead {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Animação das estrelinhas do chapéu */
+    .star-twinkle-1 {
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    .star-twinkle-2 {
+      animation: twinkle 3s ease-in-out infinite 1s;
+    }
+    .star-twinkle-3 {
+      animation: twinkle 3s ease-in-out infinite 2s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.65;
+        filter: drop-shadow(0 0 1px #ffd700);
+      }
+      50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 5px #ffea00);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <!-- ViewBox ajustado para centralizar perfeitamente a cabeça e o chapéu -->
+    <svg viewBox="100 20 200 265" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Gradiente do chapéu preservado -->
+        <linearGradient id="hatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#2563eb" />
+          <stop offset="60%" stop-color="#1e40af" />
+          <stop offset="100%" stop-color="#172554" />
+        </linearGradient>
+
+        <!-- Definição do símbolo de estrelinha amarela -->
+        <polygon id="tiny-star" points="0,-6 1.8,-1.8 6,0 1.8,1.8 0,6 -1.8,1.8 -6,0 -1.8,-1.8" fill="#facc15" />
+      </defs>
+
+      <!-- Grupo Isolado: Cabeça, Chapéu, Cabelo e Barba -->
+      <g class="wizard-head">
+        
+        <!-- Cabelo Longo Traseiro -->
+        <path d="M155 145 Q142 195 152 230 L248 230 Q258 195 245 145 Z" fill="#cbd5e1" />
+
+        <!-- Rosto / Cabeça -->
+        <rect x="168" y="128" width="64" height="68" rx="28" fill="#e2b49a" />
+
+        <!-- Orelhas -->
+        <circle cx="166" cy="162" r="7" fill="#d4a083" />
+        <circle cx="234" cy="162" r="7" fill="#d4a083" />
+
+        <!-- EXPRESSÃO SÉRIA -->
+        <g>
+          <!-- Olho esquerdo -->
+          <ellipse cx="185" cy="158" rx="6" ry="4" fill="#ffffff" />
+          <circle cx="186" cy="158" r="2.8" fill="#1e293b" />
+          <path d="M178 155 L192 156" stroke="#c68e70" stroke-width="3" stroke-linecap="round" />
+
+          <!-- Olho direito -->
+          <ellipse cx="215" cy="158" rx="6" ry="4" fill="#ffffff" />
+          <circle cx="214" cy="158" r="2.8" fill="#1e293b" />
+          <path d="M208 156 L222 155" stroke="#c68e70" stroke-width="3" stroke-linecap="round" />
+        </g>
+
+        <!-- Sobrancelhas franzidas e grossas -->
+        <path d="M174 148 L194 153" stroke="#94a3b8" stroke-width="4.5" stroke-linecap="round" />
+        <path d="M226 148 L206 153" stroke="#94a3b8" stroke-width="4.5" stroke-linecap="round" />
+        <!-- Ruga de expressão entre as sobrancelhas -->
+        <path d="M198 148 L198 154 M202 148 L202 154" stroke="#b87d60" stroke-width="1.5" stroke-linecap="round" />
+
+        <!-- Nariz definido -->
+        <path d="M200 156 L197 170 L203 171" fill="none" stroke="#b87d60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- Barba Longa -->
+        <path d="M168 172 Q165 225 200 265 Q235 225 232 172 Q215 185 200 185 Q185 185 168 172 Z" fill="#f1f5f9" />
+        <path d="M185 195 Q190 230 200 255 M215 195 Q210 230 200 255" fill="none" stroke="#cbd5e1" stroke-width="2" />
+
+        <!-- Bigode caído -->
+        <path d="M178 182 Q190 174 200 177 Q210 174 222 182 Q212 186 200 181 Q188 186 178 182 Z" fill="#e2e8f0" />
+
+        <!-- Boca fechada e firme -->
+        <path d="M192 185 Q200 183 208 185" fill="none" stroke="#7c4d3b" stroke-width="2.5" stroke-linecap="round" />
+
+        <!-- CHAPÉU DE FEITICEIRO AZUL -->
+        <g>
+          <!-- Aba do chapéu -->
+          <ellipse cx="200" cy="134" rx="78" ry="16" fill="#172554" />
+          <ellipse cx="200" cy="132" rx="76" ry="14" fill="#1e40af" />
+
+          <!-- Cone pontudo dobrado na ponta -->
+          <path d="M148 132 L188 45 Q196 32 215 48 L242 72 L222 72 L252 132 Z" fill="url(#hatGrad)" />
+
+          <!-- Faixa dourada do chapéu -->
+          <path d="M151 124 Q200 134 249 124 L251 131 Q200 141 149 131 Z" fill="#eab308" />
+
+          <!-- Estrelinhas Amarelas no Chapéu -->
+          <use href="#tiny-star" x="195" y="65" class="star-twinkle-2" transform="scale(0.85)" />
+          <use href="#tiny-star" x="178" y="95" class="star-twinkle-1" transform="scale(1)" />
+          <use href="#tiny-star" x="215" y="102" class="star-twinkle-3" transform="scale(0.9)" />
+          <use href="#tiny-star" x="196" y="114" class="star-twinkle-1" transform="scale(0.75)" />
+        </g>
+
+      </g>
+
+    </svg>
+  </div>
+
+</body>
+</html>
